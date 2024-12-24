@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Will you be the Star of my Pasko?</h1>
+    <button id="yesButton" onclick="goToFinal()">Yes</button>
+    <button id="noButton" onclick="changeToYes()">No</button>
+    <script>
+        function changeToYes() {
+            const noButton = document.getElementById('noButton');
+            noButton.textContent = "Yes";
+            noButton.setAttribute("onclick", "goToFinal()");
+        }
+
+        function goToFinal() {
+            window.location.href = "final.html";
+        }
+        function createSnowflake() {
+        const snowflake = document.createElement("div");
+        snowflake.classList.add("snowflake");
+        snowflake.textContent = "❄"; // You can change this to other snowflake symbols
+        snowflake.style.left = Math.random() * 100 + "vw"; // Random horizontal position
+        snowflake.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random fall speed
+        snowflake.style.fontSize = Math.random() * 10 + 10 + "px"; // Random size
+        document.body.appendChild(snowflake);
+
+        // Remove the snowflake after it falls
+        setTimeout(() => {
+            snowflake.remove();
+        }, 5000); // Adjust this based on animation duration
+    }
+
+    // Generate snowflakes continuously
+    setInterval(createSnowflake, 200);
+    </script>
+      
+</body>
+</html>

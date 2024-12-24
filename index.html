@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ff7f50, #ffefd5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            width: 300px;
+            height: 200px;
+            background-color: white;
+            border: 2px solid #ff6347;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .content {
+            display: none;
+            padding: 20px;
+            text-align: center;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .card.opened {
+            height: auto;
+            flex-direction: column;
+            cursor: default;
+        }
+
+        .open-message {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff6347;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="love-card">
+        <div class="closed">
+            <p class="open-message">Basi nudes ko ni:3</p>
+        </div>
+        <div class="content">
+            <p>Dear Isla,</p>
+            <p>You are the reason for my smile, my happiness, and more importantly you are my world. I love you more than words can express.</p>
+            <button onclick="navigateToBalloons()">Next</button>
+        </div>
+    </div>
+
+    <audio id="background-music" loop>
+        <source src="music.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const card = document.getElementById("love-card");
+        const music = document.getElementById("background-music");
+
+        // Event to open the card and play music
+        card.addEventListener("click", function () {
+            if (!card.classList.contains("opened")) {
+                card.classList.add("opened");
+                document.querySelector(".closed").style.display = "none";
+                document.querySelector(".content").style.display = "block";
+                music.play().catch(error => {
+                    console.warn("Autoplay failed: " + error.message);
+                });
+            }
+        });
+
+        // Navigate to balloons page
+        function navigateToBalloons() {
+            window.location.href = "balloon.html";
+        }
+    </script>
+</body>
+</html>

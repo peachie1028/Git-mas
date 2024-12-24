@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>My Christmas Tree</h1>
+    <div class="tree-container">
+        <div class="tree">
+            <!-- Custom Image as Star -->
+            <div class="star">
+                <img src="star.jpeg" alt="Star" class="custom-star">
+            </div>
+            <div class="branches"></div>
+            <div class="lights">
+                <span class="light red"></span>
+                <span class="light yellow"></span>
+                <span class="light green"></span>
+                <span class="light blue"></span>
+                <span class="light pink"></span>
+                <span class="light white"></span>
+            </div>
+            <div class="trunk"></div>
+        </div>
+    </div>
+    <script>function createSnowflake() {
+        const snowflake = document.createElement("div");
+        snowflake.classList.add("snowflake");
+        snowflake.textContent = "❄"; // You can change this to other snowflake symbols
+        snowflake.style.left = Math.random() * 100 + "vw"; // Random horizontal position
+        snowflake.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random fall speed
+        snowflake.style.fontSize = Math.random() * 10 + 10 + "px"; // Random size
+        document.body.appendChild(snowflake);
+
+        // Remove the snowflake after it falls
+        setTimeout(() => {
+            snowflake.remove();
+        }, 5000); // Adjust this based on animation duration
+    }
+
+    // Generate snowflakes continuously
+    setInterval(createSnowflake, 200);  </script>
+</body>
+</html>

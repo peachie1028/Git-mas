@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloons</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio autoplay>
+        <source src="music.mp3" type="audio/mp3">
+    </audio>
+    <h1>Pop them and see the bad things disappear sweetie</h1>
+    <div class="balloons">
+        <div class="balloon" onclick="popBalloon(this, 'Pimples')">Pimples</Loo></div>
+        <div class="balloon" onclick="popBalloon(this, 'Misfortune')">Misfortune</div>
+        <div class="balloon" onclick="popBalloon(this, 'Mga ex mo')">Mga ex mo</div>
+    </div>
+    <script>
+        function popBalloon(balloon, message) {
+            balloon.style.display = "none";
+            if (message === "Mga ex mo") {
+                setTimeout(() => {
+                    window.location.href = "tree.html";
+                }, 500); // Delay for popping effect
+            }
+        }
+        function createSnowflake() {
+        const snowflake = document.createElement("div");
+        snowflake.classList.add("snowflake");
+        snowflake.textContent = "❄"; // You can change this to other snowflake symbols
+        snowflake.style.left = Math.random() * 100 + "vw"; // Random horizontal position
+        snowflake.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random fall speed
+        snowflake.style.fontSize = Math.random() * 10 + 10 + "px"; // Random size
+        document.body.appendChild(snowflake);
+
+        // Remove the snowflake after it falls
+        setTimeout(() => {
+            snowflake.remove();
+        }, 5000); // Adjust this based on animation duration
+    }
+
+    // Generate snowflakes continuously
+    setInterval(createSnowflake, 200);
+    </script>
+</body>
+</html>
