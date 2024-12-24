@@ -13,6 +13,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden; /* Ensure snowflakes stay within the viewport */
         }
 
         .card {
@@ -27,6 +28,7 @@
             align-items: center;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1000; /* Ensure card stays above snowflakes */
         }
 
         .card:hover {
@@ -69,6 +71,23 @@
         button:hover {
             background-color: #ff4500;
         }
+
+        /* Snowflake styles */
+        .snowflake {
+            position: absolute;
+            top: -10px; /* Start slightly above the viewport */
+            color: white;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(100vh); /* Fall to the bottom of the viewport */
+            }
+        }
     </style>
 </head>
 <body>
@@ -106,8 +125,27 @@
 
         // Navigate to balloons page
         function navigateToBalloons() {
-            window.location.href = "balloon.html";
+            window.location.href = "balloons.html";
         }
+
+        // Function to create snowflakes
+        function createSnowflake() {
+            const snowflake = document.createElement("div");
+            snowflake.classList.add("snowflake");
+            snowflake.textContent = "❄"; // Snowflake symbol
+            snowflake.style.left = Math.random() * 100 + "vw"; // Random horizontal position
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random fall speed
+            snowflake.style.fontSize = Math.random() * 10 + 10 + "px"; // Random size
+            document.body.appendChild(snowflake);
+
+            // Remove the snowflake after it falls
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000); // Adjust this based on animation duration
+        }
+
+        // Generate snowflakes continuously
+        setInterval(createSnowflake, 200);
     </script>
 </body>
 </html>
